@@ -16,7 +16,7 @@ public class InsertDemo_02 {
 		String mail1 = "anant@gmail.com";
 		String password1 = "505050";
 		String gender1 = "male";
-		String city1 = "Patna";
+		String city1 = "Patna (Bihar)";
 
 		// ==========================================================
 		// NOTE 2: Load the MySQL JDBC Driver.
