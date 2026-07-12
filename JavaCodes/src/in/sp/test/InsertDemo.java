@@ -2,6 +2,7 @@ package in.sp.test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 public class InsertDemo {
 	
@@ -9,7 +10,16 @@ public class InsertDemo {
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc_db", "root", "802152");
-	    System.out.print("Success.");
+	    
+		PreparedStatement ps = con.prepareStatement("insert into register values('manish', 'manish@gmail.com', '12345', 'male', 'dibrugarh')");
+		int i = ps.executeUpdate();
+		
+		if(i > 0) {
+			System.out.println("Success");
+		}
+		else {
+			System.out.println("Fail");
+		}
 	}
 }
   
