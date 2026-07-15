@@ -7,9 +7,6 @@
 .project
 .settings/
 
-# VS Code (if you ever open the project in VS Code)
-.vscode/
-
 # IntelliJ IDEA (if you ever use IntelliJ)
 .idea/
 *.iml
