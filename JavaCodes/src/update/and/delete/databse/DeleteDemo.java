@@ -5,15 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.Scanner;
 
-public class UpdateDatabase {
+public class DeleteDemo {
 	
 	public static void main(String[] args) throws Exception {
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("Updating Your City ");
-		System.out.println("Enter Your City Name ");
-		String city2 = sc.nextLine();
-		
+		System.out.println("Delete Data ");
 		System.out.println("Enter Your Email ");
 		String email2 = sc.nextLine();
 		
@@ -21,17 +18,16 @@ public class UpdateDatabase {
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc_db", "root", "802152");
 	    
 		PreparedStatement ps = con.prepareStatement(
-				"Update register set city = ? where email = ?");
+				"Delete from register where email = ?");
 		
-		ps.setString(1, city2);
-		ps.setString(2, email2);
+		ps.setString(1, email2);
 		
 		int i = ps.executeUpdate();
 		
 		if(i > 0) {
-			System.out.println("Update Successful");
+			System.out.println("Deletion Successful");
 		}else {
-			System.out.println("Update Failed");
+			System.out.println("Deletion Failed");
 		}
 		
 		ps.close();
