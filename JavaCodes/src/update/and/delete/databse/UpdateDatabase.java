@@ -21,7 +21,7 @@ public class UpdateDatabase {
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc_db", "root", "802152");
 	    
 		PreparedStatement ps = con.prepareStatement(
-				"Update register set email = ? where city = ?");
+				"Update register set city = ? where email = ?");
 		
 		ps.setString(1, city2);
 		ps.setString(2, email2);
