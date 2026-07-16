@@ -22,12 +22,16 @@ public class Main_01 {
             String query = "select * from students";
             ResultSet rs = st.executeQuery(query);
 
+            System.out.println("Id--| Name----------| Age--| Marks---");
+            System.out.println("-------------------------------------");
             while (rs.next()) {
                 int id = rs.getInt(  "id");
                 String name = rs.getString(  "name");
                 int age = rs.getInt(  "age");
                 double marks = rs.getDouble(  "marks");
-                System.out.println(id + " | " + name + " | " + age + " | " + marks);
+
+                System.out.printf("%-4s| %-14s| %-5s| %-8s%n",
+                        id, name, age, marks);
             }
 
             rs.close();
