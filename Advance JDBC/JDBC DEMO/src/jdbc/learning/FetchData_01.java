@@ -2,13 +2,14 @@ package jdbc.learning;
 
 import java.sql.*;
 
-public class FetchData {
+public class FetchData_01 {
 
     private static String url = "jdbc:mysql://localhost:3306/mydb";
     private static String user = "root";
     private static String password = "802152";
 
     public static void main(String[] args) {
+
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
         }catch(ClassNotFoundException e) {
