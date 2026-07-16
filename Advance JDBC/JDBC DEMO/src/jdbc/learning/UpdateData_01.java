@@ -2,7 +2,7 @@ package jdbc.learning;
 
 import java.sql.*;
 
-public class UpdateData {
+public class UpdateData_01 {
 
     private static String url = "jdbc:mysql://localhost:3306/mydb";
     private static String user = "root";
