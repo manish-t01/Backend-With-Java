@@ -2,7 +2,7 @@ package jdbc.learning;
 
 import java.sql.SQLException;
 
-public class BatchInsertAutoCommiImpNote_03 {
+public class BatchInsert_03 {
     public static void main(String[] args) throws SQLException {
 
 //===========================================================
