@@ -48,6 +48,10 @@ public class InsertAccount {
                 System.out.println("Failed to insert account.");
             }
 
+            con.close();
+            sc.close();
+            pstmt.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
