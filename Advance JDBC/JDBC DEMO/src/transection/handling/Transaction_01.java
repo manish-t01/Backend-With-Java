@@ -77,6 +77,9 @@ public class Transaction_01 {
                 e.printStackTrace();
             }
 
+            con.close();
+            sc.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -97,6 +100,9 @@ public class Transaction_01 {
                 double balance = resultSet.getDouble("balance");
                 return balance >= amount;
             }
+
+            connection.close();
+            preparedStatement.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
