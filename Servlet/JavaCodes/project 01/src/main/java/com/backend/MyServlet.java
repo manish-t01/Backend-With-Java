@@ -1,6 +1,7 @@
 package com.backend;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -12,8 +13,11 @@ public class MyServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest reqest, HttpServletResponse response) throws ServletException, IOException {
 		
-		// Backend Code
+		PrintWriter out = response.getWriter();
+		out.print("This Will Print on Browser.");
 		
+		// Backend Code
+		System.out.println("Created My first Servlet.");
 	}
 
 }
