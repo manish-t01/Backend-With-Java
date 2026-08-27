@@ -16,7 +16,7 @@ public class Register extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.print("Sending data...");
 		
-		System.out.println("I am in register page.");
+		System.out.println("I am in register page method.");
 		
 	}
 
