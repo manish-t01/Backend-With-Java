@@ -14,7 +14,7 @@ public class Login extends HttpServlet{
 protected void service(HttpServletRequest reqest, HttpServletResponse response) throws ServletException, IOException {
 	
 	PrintWriter out = response.getWriter();
-	out.print("Sending Request...");
+	out.print("Loading...");
 	
 	System.out.println("I am using service method instead of doge method");
 	System.out.println("btw they work in same way u can also ask ai for clear answer.");
