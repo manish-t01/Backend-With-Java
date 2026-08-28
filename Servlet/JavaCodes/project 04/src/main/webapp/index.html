@@ -1,10 +1,208 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Animated Form</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: linear-gradient(
+                135deg,
+                #0f172a,
+                #1e3a8a,
+                #312e81
+            );
+
+            background-size: 300% 300%;
+            animation: backgroundMove 8s ease infinite;
+        }
+
+        /* Form Container */
+        form {
+            width: 380px;
+            padding: 40px;
+
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+
+            animation: formAppear 0.8s ease;
+        }
+
+        /* Heading */
+        form::before {
+            content: "Welcome";
+            display: block;
+
+            text-align: center;
+            color: white;
+
+            font-size: 30px;
+            font-weight: bold;
+
+            margin-bottom: 30px;
+        }
+
+        /* Input Fields */
+        input[type="text"] {
+            width: 100%;
+            padding: 14px 16px;
+
+            margin-bottom: 20px;
+
+            border: 2px solid transparent;
+            border-radius: 10px;
+
+            outline: none;
+
+            background: rgba(255, 255, 255, 0.9);
+            color: #111827;
+
+            font-size: 16px;
+
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]::placeholder {
+            color: #6b7280;
+        }
+
+        input[type="text"]:focus {
+            border-color: #60a5fa;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 0 10px rgba(96, 165, 250, 0.6),
+                0 0 25px rgba(96, 165, 250, 0.3);
+        }
+
+        /* Submit Button */
+        input[type="submit"] {
+            width: 100%;
+            padding: 14px;
+
+            margin-top: 5px;
+
+            border: none;
+            border-radius: 10px;
+
+            background: linear-gradient(
+                135deg,
+                #3b82f6,
+                #8b5cf6
+            );
+
+            color: white;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+            box-shadow:
+                0 8px 20px rgba(59, 130, 246, 0.35);
+        }
+
+        /* Button Hover */
+        input[type="submit"]:hover {
+            transform: translateY(-4px) scale(1.02);
+
+            box-shadow:
+                0 12px 30px rgba(59, 130, 246, 0.55);
+
+            background: linear-gradient(
+                135deg,
+                #2563eb,
+                #7c3aed
+            );
+        }
+
+        /* Button Click */
+        input[type="submit"]:active {
+            transform: translateY(1px) scale(0.98);
+        }
+
+        /* Background Animation */
+        @keyframes backgroundMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Form Animation */
+        @keyframes formAppear {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 450px) {
+            form {
+                width: 90%;
+                padding: 30px;
+            }
+        }
+    </style>
 </head>
+
 <body>
+
+<!-- this is the main part and the above code is just css codes -->
+    <form action="submitform" method="post">
+
+        <input
+            type="text"
+            name="name1"
+            placeholder="Enter your name"
+        />
+
+        <input
+            type="text"
+            name="email1"
+            placeholder="Enter your email"
+        />
+
+        <input
+            type="submit"
+            value="Click Me"
+        />
+
+    </form>
 
 </body>
 </html>
