@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class Login extends HttpServlet {
 	
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String myemail = (String) req.getParameter("name1");
 		String mypass = (String) req.getParameter("pass1");
