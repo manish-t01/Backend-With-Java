@@ -2,17 +2,452 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Page</title>
+
+    <style>
+
+        /* =========================
+           GLOBAL STYLES
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+            background:
+                radial-gradient(circle at 15% 20%, rgba(0, 255, 255, 0.20), transparent 30%),
+                radial-gradient(circle at 85% 80%, rgba(255, 0, 200, 0.25), transparent 30%),
+                linear-gradient(135deg, #09001a, #10002b, #00152e);
+
+            color: white;
+            position: relative;
+        }
+
+
+        /* =========================
+           ANIMATED BACKGROUND
+        ========================= */
+
+        body::before {
+            content: "";
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(
+                135deg,
+                rgba(0, 255, 255, 0.35),
+                rgba(0, 100, 255, 0.10)
+            );
+
+            filter: blur(80px);
+
+            top: -150px;
+            left: -150px;
+
+            animation: floatOne 10s ease-in-out infinite alternate;
+        }
+
+
+        body::after {
+            content: "";
+            position: absolute;
+
+            width: 450px;
+            height: 450px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(
+                135deg,
+                rgba(255, 0, 200, 0.35),
+                rgba(100, 0, 255, 0.10)
+            );
+
+            filter: blur(80px);
+
+            right: -150px;
+            bottom: -150px;
+
+            animation: floatTwo 12s ease-in-out infinite alternate;
+        }
+
+
+        @keyframes floatOne {
+
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(150px, 100px) scale(1.2);
+            }
+        }
+
+
+        @keyframes floatTwo {
+
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(-120px, -100px) scale(1.25);
+            }
+        }
+
+
+        /* =========================
+           GLASS CARD
+        ========================= */
+
+        .search-container {
+
+            width: min(90%, 600px);
+
+            padding: 55px 50px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            border: 1px solid rgba(255, 255, 255, 0.20);
+
+            border-radius: 30px;
+
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.45),
+                inset 0 1px 1px rgba(255, 255, 255, 0.20);
+
+            position: relative;
+
+            z-index: 2;
+
+            animation: cardAppear 1s ease forwards;
+
+            transition: transform 0.5s ease,
+                        box-shadow 0.5s ease;
+        }
+
+
+        .search-container:hover {
+
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 40px 100px rgba(0, 0, 0, 0.55),
+                0 0 40px rgba(100, 200, 255, 0.08),
+                inset 0 1px 1px rgba(255, 255, 255, 0.25);
+        }
+
+
+        @keyframes cardAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+
+        /* =========================
+           HEADING
+        ========================= */
+
+        h3 {
+
+            font-size: clamp(30px, 6vw, 48px);
+
+            font-weight: 700;
+
+            margin-bottom: 35px;
+
+            letter-spacing: -1px;
+
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #9eeaff,
+                #e9a6ff,
+                #ffffff
+            );
+
+            background-size: 300% auto;
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+
+            animation: gradientText 5s linear infinite;
+        }
+
+
+        @keyframes gradientText {
+
+            0% {
+                background-position: 0% center;
+            }
+
+            100% {
+                background-position: 300% center;
+            }
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+
+        /* =========================
+           INPUT
+        ========================= */
+
+        input[type="text"] {
+
+            width: 100%;
+
+            padding: 18px 22px;
+
+            border-radius: 16px;
+
+            border: 1px solid rgba(255, 255, 255, 0.22);
+
+            outline: none;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            color: white;
+
+            font-size: 17px;
+
+            backdrop-filter: blur(15px);
+
+            box-shadow:
+                inset 0 1px 1px rgba(255, 255, 255, 0.08),
+                0 10px 30px rgba(0, 0, 0, 0.15);
+
+            transition:
+                border 0.35s ease,
+                box-shadow 0.35s ease,
+                background 0.35s ease,
+                transform 0.35s ease;
+        }
+
+
+        input[type="text"]::placeholder {
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+
+        input[type="text"]:focus {
+
+            background: rgba(255, 255, 255, 0.13);
+
+            border-color: rgba(120, 220, 255, 0.8);
+
+            box-shadow:
+                0 0 0 4px rgba(80, 200, 255, 0.10),
+                0 0 35px rgba(80, 200, 255, 0.20);
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           SEARCH BUTTON
+        ========================= */
+
+        input[type="submit"] {
+
+            width: 100%;
+
+            padding: 17px;
+
+            border: none;
+
+            border-radius: 16px;
+
+            cursor: pointer;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            letter-spacing: 0.5px;
+
+            background:
+                linear-gradient(
+                    110deg,
+                    #00c6ff,
+                    #0072ff,
+                    #a100ff,
+                    #ff00c8
+                );
+
+            background-size: 300% 100%;
+
+            box-shadow:
+                0 12px 30px rgba(0, 114, 255, 0.30);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+
+            animation: buttonGradient 5s linear infinite;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        @keyframes buttonGradient {
+
+            0% {
+                background-position: 0% center;
+            }
+
+            50% {
+                background-position: 100% center;
+            }
+
+            100% {
+                background-position: 0% center;
+            }
+        }
+
+
+        input[type="submit"]::after {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: -100%;
+
+            width: 60%;
+            height: 100%;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.35),
+                transparent
+            );
+
+            transform: skewX(-20deg);
+
+            transition: left 0.7s ease;
+        }
+
+
+        input[type="submit"]:hover {
+
+            transform: translateY(-4px) scale(1.01);
+
+            box-shadow:
+                0 18px 40px rgba(0, 140, 255, 0.40),
+                0 0 30px rgba(180, 0, 255, 0.20);
+        }
+
+
+        input[type="submit"]:hover::after {
+            left: 130%;
+        }
+
+
+        input[type="submit"]:active {
+
+            transform: translateY(0) scale(0.98);
+
+            box-shadow:
+                0 8px 20px rgba(0, 114, 255, 0.25);
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .search-container {
+
+                padding: 40px 25px;
+
+                border-radius: 24px;
+            }
+
+            h3 {
+                margin-bottom: 28px;
+            }
+
+            input[type="text"],
+            input[type="submit"] {
+
+                padding: 16px;
+            }
+        }
+
+    </style>
 </head>
+
 <body>
 
-    <h3>Search Page</h3>
+    <div class="search-container">
 
-    <form action="mysearch" method="post">
-        <input type="text" name="search1" placeholder="Search">
-        <br><br>
-        <input type="submit" value="Search">
-    </form>
+        <h3>Search Page</h3>
+
+        <form action="mysearch" method="post">
+
+            <input
+                type="text"
+                name="search1"
+                placeholder="Search anything..."
+                autocomplete="off"
+            >
+
+            <input
+                type="submit"
+                value="Search"
+            >
+
+        </form>
+
+    </div>
 
 </body>
 </html>
