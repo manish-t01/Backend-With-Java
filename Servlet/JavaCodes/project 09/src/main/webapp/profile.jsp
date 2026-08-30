@@ -14,7 +14,8 @@
 	
 	<h4>Welcome : <%= myname %></h4>
 	<a href="home.jsp">Home</a> <br></br>
-	<a href="about-us.jsp">About Us</a>
+	<a href="about-us.jsp">About Us</a><br></br>
+	<a href="logout">Logout</a>
 	
 </body>
 </html>
