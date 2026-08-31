@@ -558,7 +558,7 @@ Therefore, the main idea is:
 If you want, I can also turn the **next JSP topic (JSP lifecycle / JSP tags / directives / scriptlets)** into the same format.
 ```
 
-# Video Info-------------------------------------------------------------------------------------------------------------------------------------------------
+# Video Info
 
 Video title: #11 Introduction to JSP || Why to use JSP || Difference b/w Servlet & JSP || Advance Java Tutorials
 Video link: https://youtu.be/I0YKLJv1KGU?si=wmLtJH5PU9m4NNz6
